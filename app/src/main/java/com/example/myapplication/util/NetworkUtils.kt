@@ -114,7 +114,7 @@ class NetworkUtils(private val context: Context) : LiveData<Boolean>() {
         super.onInactive()
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                connectivityManager.unregisterNetworkCallback(connectivityManagerCallback())
+                connectivityManager.unregisterNetworkCallback(networkCallback)
             } else {
                 context.unregisterReceiver(networkReceiver)
             }

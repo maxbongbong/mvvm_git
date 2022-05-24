@@ -113,7 +113,7 @@ class FrgSearch : BasicFragment() {
                         override fun selectItem(position: Int, type: String) {
                             when (type) {
                                 "select" -> {
-                                    val url = getItem(position).htmlUrl
+                                    val url = getUser(position).htmlUrl
                                     if (url.isNullOrEmpty()) {
                                         showToastMessage(getString(R.string.empty_url))
                                     } else {
@@ -140,7 +140,6 @@ class FrgSearch : BasicFragment() {
             } else {
                 binding.tvEmpty.visibility = View.INVISIBLE
                 binding.rvUser.visibility = View.VISIBLE
-
             }
 
             userAdapter.updateUserList(list)

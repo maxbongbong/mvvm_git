@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.callback.UserDiffCallBack
@@ -14,10 +14,9 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_user.view.*
 
 class UserItemAdapter(private val context: Context) :
-    RecyclerView.Adapter<UserItemAdapter.CustomViewHolder>() {
+    ListAdapter<User, UserItemAdapter.CustomViewHolder>(UserDiffCallBack) {
 
     var selectItem: SelectItem? = null
-    private val asyncDiffer = AsyncListDiffer(this, UserDiffCallBack())
 
     interface SelectItem {
         fun selectItem(position: Int, type: String)
@@ -29,13 +28,9 @@ class UserItemAdapter(private val context: Context) :
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        if (asyncDiffer.currentList.size > position) {
-            holder.bindView(context, position, asyncDiffer.currentList[position], selectItem)
+        if (currentList.size > position) {
+            holder.bindView(context, position, getItem(position), selectItem)
         }
-    }
-
-    override fun getItemCount(): Int {
-        return asyncDiffer.currentList.size
     }
 
     class CustomViewHolder(override val containerView: View?) :
@@ -74,8 +69,7 @@ class UserItemAdapter(private val context: Context) :
         }
     }
 
-    fun updateUserList(newList: List<User>) = asyncDiffer.submitList(newList)
+    fun updateUserList(newList: List<User>) = submitList(newList)
 
-    fun getItem(position: Int): User = asyncDiffer.currentList[position]
+    fun getUser(position: Int): User = currentList[position]
 }
-
