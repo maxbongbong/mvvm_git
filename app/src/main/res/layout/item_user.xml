@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="13dp"
+        android:paddingBottom="13dp">
+
+        <!-- 사진영역 -->
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/ivPhoto"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="18dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="50dp"
+            app:riv_mutate_background="true"
+            app:riv_oval="true"
+            android:src="@drawable/img_profile_default"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/ivPhoto"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="normal"
+                    tools:text="이름" />
+
+                <TextView
+                    android:id="@+id/tvUrl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="#707070"
+                    android:textSize="13sp"
+                    android:textStyle="normal"
+                    tools:text="url 주소" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f0f0f0" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
